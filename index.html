@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Arcade Classic - Snake, 2048, Sudoku, Memory</title>
+<meta name="description" content="Four polished classic games in one free offline app: Snake, 2048, Sudoku and Memory. Dark/light, mobile touch controls, high scores.">
+<script>(function(){var t=localStorage.getItem('theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t;})();</script>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#4f46e5">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <header class="topbar">
+    <div class="brand"><span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12h4m-2-2v4m7-3h.01M18 13h.01M17.3 5H6.7a4.7 4.7 0 0 0-4.6 3.8L1 14a4 4 0 0 0 6.6 3.4L9.5 15h5l1.9 2.4A4 4 0 0 0 23 14l-1.1-5.2A4.7 4.7 0 0 0 17.3 5z"/></svg></span>
+      <span>Arcade Classic<small>Snake · 2048 · Sudoku · Memory</small></span></div>
+    <div class="spacer"></div>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+  </header>
+
+  <main class="container">
+    <section id="hub">
+      <div class="hero card" style="text-align:center">
+        <h1>Arcade Classic</h1>
+        <p class="muted">Four timeless games, beautifully rebuilt. Offline, free, with high scores saved on your device.</p>
+      </div>
+      <div class="grid grid-4" style="margin-top:16px" id="gameGrid"></div>
+      <div class="card" style="margin-top:16px"><h3>Your best scores</h3><div class="grid grid-4" id="bestScores"></div></div>
+    </section>
+    <section id="gameHost" hidden>
+      <div class="row between" style="margin-bottom:14px">
+        <button class="btn btn-ghost" onclick="closeGame()">&larr; All games</button>
+        <h2 class="mb-0" id="gameTitle"></h2>
+        <span class="chip chip-accent" id="gameBest"></span>
+      </div>
+      <div id="gameRoot"></div>
+    </section>
+  </main>
+  <footer class="muted small" style="text-align:center;padding:18px">Works offline · High scores stay on your device</footer>
+</div>
+<script src="ui.js"></script>
+<script src="games/snake.js"></script>
+<script src="games/g2048.js"></script>
+<script src="games/sudoku.js"></script>
+<script src="games/memory.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
